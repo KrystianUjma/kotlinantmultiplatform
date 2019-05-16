@@ -1,0 +1,21 @@
+<project default="document">
+    <target name="clean">
+        <delete dir="doc"/>
+    </target>
+    <!-- classpath to dokka fatjar -->
+    <typedef resource="dokka-antlib.xml" classpath="dokka-fatjar-0.9.19-SNAPSHOT.jar"/>
+    <target name="document">
+        <dokka format="html" outputdir="html">
+            <passConfig moduleName="kotlinant">
+                <target value="jvm"/>
+                <sourceRoot path="src/commonMain/kotlin/org/kotlintestmpp/"/>
+                <sourceRoot path="src/jvmMain/kotlin/org/kotlintestmpp/"/>
+            </passConfig>
+            <passConfig moduleName="kotlinant">
+                <target value="js"/>
+                <sourceRoot path="src/commonMain/kotlin/org/kotlintestmpp/"/>
+                <sourceRoot path="src/jsMain/kotlin/org/kotlintestmpp"/>
+            </passConfig>
+        </dokka>
+    </target>
+</project>
